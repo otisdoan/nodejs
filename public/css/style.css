@@ -1,0 +1,82 @@
+.inner-menu ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  column-gap: 2rem;
+  margin: 0;
+}
+
+
+.inner-logo {
+  width: 10rem;
+}
+
+.footer {
+  padding: 20px 0px 20px 0px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.082);
+  padding: 20px;
+}
+
+.title {
+  color: green;
+}
+
+.inner-product {
+  border: 1px solid rgba(0, 0, 0, 0.308);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 16px;
+  height: 30rem;
+  margin-bottom: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.inner-product img {
+  width: 100%;
+  height: 16rem;
+}
+
+.inner-product img:hover {
+  transform: scale(1.1);
+  transition-duration: 1s;
+}
+
+.inner-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.inner-price {
+  color: green;
+  font-weight: 500;
+}
+
+.inner-discount {
+  width: 80px;
+  height: 30px;
+  color: white;
+  background-color: red;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.old-price {
+  color: red;
+  text-decoration: line-through;
+}

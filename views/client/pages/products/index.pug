@@ -1,3 +1,19 @@
 extends ../../layouts/layoutDefault.pug
+
 block main 
-  h1 Trang san pham
+	h2.title #{'Danh sach san pham'}
+	.container 
+		.row 
+			each product in products
+				.col-3
+					.product-item
+						.inner-product 
+							img(src=product.thumbnail, alt="")
+							span.inner-title #{product.title}
+							span.inner-price #{product.newPrice}$
+							span.old-price #{product.price}$
+							.inner-discount -#{product.discountPercentage}%
+			
+
+
+
