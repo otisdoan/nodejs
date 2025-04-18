@@ -1,0 +1,21 @@
+# Thư mục node_modules
+node_modules/
+
+# File .env chứa biến môi trường bí mật
+.env
+
+# Log files
+logs
+*.log
+npm-debug.log*
+
+# Thư mục build hoặc dist
+dist/
+build/
+
+# VS Code settings
+.vscode/
+
+# OS files (Mac, Windows)
+.DS_Store
+Thumbs.db
