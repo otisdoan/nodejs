@@ -10,9 +10,20 @@
 .sider {
   background-color: rgb(43, 41, 41);
   color: white;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   row-gap: 16px;
   padding-top: 16px;
+  height: 100%;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 16px;
+}
+
+td img {
+  width: 10rem;
 }

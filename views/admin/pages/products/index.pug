@@ -1,4 +1,27 @@
 extends ../../layouts/default.pug
 
 block main 
-  h1 Trang san pham 
+  h2 Danh sách sản phẩm
+  table.table.table-striped
+    thead
+      tr
+        th(scope="col") STT
+        th(scope="col") Hình ảnh
+        th(scope="col") Tiêu đề
+        th(scope="col") Giá
+        th(scope="col") Trạng thái 
+        th(scope="col") Hành động
+    tbody
+      each item, index in products
+        tr
+          th(scope="row") #{index + 1}
+          td 
+            img(src=item.thumbnail, alt="", srcset="")
+          td #{item.title}
+          td #{item.price}$
+          td
+            .btn(class=item.classStatus) #{item.displayStatus}
+          td
+            .action 
+              .btn.btn-warning Sửa
+              .btn.btn-danger Xóa 
