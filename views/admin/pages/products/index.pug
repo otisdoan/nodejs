@@ -2,6 +2,12 @@ extends ../../layouts/default.pug
 
 block main 
   h2 Danh sách sản phẩm
+  .dropdown.mb-3
+    button.btn.btn-success.dropdown-toggle(type="button", data-toggle="dropdown", aria-expanded="false") Lọc theo trạng thái
+    .dropdown-menu
+      a.dropdown-item(href="/admin/products") Tất cả 
+      a.dropdown-item(href="/admin/products?status=active") Hoạt động 
+      a.dropdown-item(href="/admin/products?status=inactive") Dừng hoạt động
   table.table.table-striped
     thead
       tr
