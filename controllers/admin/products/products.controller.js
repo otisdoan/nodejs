@@ -9,13 +9,19 @@ module.exports.index = async (req, res) => {
     find.status = req.query.status
   }
 
+  if (req.query.searchs) {
+    find.title = {
+      $regex: `^${req.query.searchs}`,
+      $options: 'i'
+    }
+  }
+
   const products = await Products.find(find);
   const newProduct = products.map((item) => {
     item.displayStatus = item.status === 'active' ? 'Hoạt động' : 'Dừng hoạt động'
     item.classStatus = item.status === 'active' ? 'btn-success' : 'btn-danger'
     return item;
   })
-  console.log(newProduct);
   res.render('admin/pages/products/index', {
     products: newProduct
   });

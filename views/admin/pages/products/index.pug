@@ -2,12 +2,19 @@ extends ../../layouts/default.pug
 
 block main 
   h2 Danh sách sản phẩm
-  .dropdown.mb-3
-    button.btn.btn-success.dropdown-toggle(type="button", data-toggle="dropdown", aria-expanded="false") Lọc theo trạng thái
-    .dropdown-menu
-      a.dropdown-item(href="/admin/products") Tất cả 
-      a.dropdown-item(href="/admin/products?status=active") Hoạt động 
-      a.dropdown-item(href="/admin/products?status=inactive") Dừng hoạt động
+  .row 
+    .col-6
+      .dropdown.mb-3
+        button.btn.btn-success.dropdown-toggle(type="button", data-toggle="dropdown", aria-expanded="false") Lọc theo trạng thái
+        .dropdown-menu
+          a.dropdown-item(href="/admin/products") Tất cả 
+          a.dropdown-item(href="/admin/products?status=active") Hoạt động 
+          a.dropdown-item(href="/admin/products?status=inactive") Dừng hoạt động
+    .col-6
+      .input-group.mb-3
+        input.form-control(type="text", placeholder="Tìm kiếm sản phẩm", aria-label="Recipient's username", aria-describedby="button-addon2")
+        .input-group-append
+          button.btn.btn-success(type="button", id="button-addon2") Tìm kiếm
   table.table.table-striped
     thead
       tr
