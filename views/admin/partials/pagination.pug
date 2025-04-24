@@ -1,0 +1,9 @@
+nav(aria-label="Page navigation example")
+  ul.pagination
+    li.page-item
+      a.page-link(href="#") Previous
+    each record, index in totalProducts 
+      li.page-item
+        a.page-link(href="#") #{index + 1}
+    li.page-item
+      a.page-link(href="#") Next

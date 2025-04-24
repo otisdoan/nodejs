@@ -15,8 +15,15 @@ module.exports.index = async (req, res) => {
       $options: 'i'
     }
   }
+  let skipProducts;
+  const totalProducts = await Products.find(find).countDocuments();
+  const sizePage = 2;
 
-  const products = await Products.find(find);
+  if (req.query.page) {
+    skipProducts = (req.query.page - 1) * sizePage;
+  }
+
+  const products = await Products.find(find).limit(sizePage).skip(skipProducts || 0);
   const newProduct = products.map((item) => {
     item.displayStatus = item.status === 'active' ? 'Hoạt động' : 'Dừng hoạt động'
     item.classStatus = item.status === 'active' ? 'btn-success' : 'btn-danger'
@@ -24,6 +31,7 @@ module.exports.index = async (req, res) => {
   })
   res.render('admin/pages/products/index', {
     products: newProduct,
-    searchs: req.query.searchs
-  });
+    searchs: req.query.searchs,
+    totalProducts: Array(Math.ceil(totalProducts / sizePage))
+  })
 }
