@@ -23,6 +23,7 @@ module.exports.index = async (req, res) => {
     return item;
   })
   res.render('admin/pages/products/index', {
-    products: newProduct
+    products: newProduct,
+    searchs: req.query.searchs
   });
 }
