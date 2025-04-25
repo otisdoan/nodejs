@@ -3,5 +3,6 @@ const route = express.Router();
 const productsController = require('../../controllers/admin/products/products.controller')
 
 route.get('/', productsController.index);
+route.get('/change-status/:status/:id', productsController.changeStatus);
 
 module.exports = route;

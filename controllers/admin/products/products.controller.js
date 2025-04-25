@@ -35,3 +35,7 @@ module.exports.index = async (req, res) => {
     totalProducts: Array(Math.ceil(totalProducts / sizePage))
   })
 }
+
+module.exports.changeStatus = (req, res) => {
+  res.send(req.params)
+}
