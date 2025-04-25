@@ -19,7 +19,7 @@ module.exports.index = async (req, res) => {
   const totalProducts = await Products.find(find).countDocuments();
   const sizePage = 2;
 
-  if (req.query.page) {
+  if (req.query.page || 1) {
     skipProducts = (req.query.page - 1) * sizePage;
   }
 
