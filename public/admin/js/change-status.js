@@ -8,7 +8,7 @@ buttonStatus.forEach((item) => {
   item.addEventListener('click', () => {
     item.innerHTML === 'Hoạt động' ? status = 'inactive' : status = 'active';
     id = item.getAttribute('id-status');
-    path = ` ${formElement.getAttribute('data-path')}/change-status/${status}/${id}`;
+    path = ` ${formElement.getAttribute('data-path')}/change-status/${status}/${id}?_method=PATCH`;
     formElement.action = path;
     formElement.submit();
   })

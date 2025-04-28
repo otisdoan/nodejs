@@ -5,8 +5,11 @@ const app = express();
 require('dotenv').config();
 const database = require('./config/database');
 const port = process.env.PORT;
+var methodOverride = require('method-override');
 
 database.connect();
+
+app.use(methodOverride('_method'));
 
 app.use(express.static('public'));
 

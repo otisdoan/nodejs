@@ -45,8 +45,10 @@ module.exports.changeStatus = async (req, res) => {
   )
     .then(updatedUser => {
       console.log('Người dùng sau khi cập nhật:', updatedUser);
+      res.redirect('/admin/products')
     })
     .catch(err => {
       console.error('Lỗi khi cập nhật:', err);
     });
+
 }
