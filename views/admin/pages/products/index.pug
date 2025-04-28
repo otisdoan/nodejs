@@ -15,9 +15,20 @@ block main
         input.form-control(type="text", placeholder="Tìm kiếm sản phẩm", aria-label="Recipient's username", aria-describedby="button-addon2", value= searchs)
         .input-group-append
           button.btn.btn-success(type="button", id="button-addon2") Tìm kiếm
+  form(action=`/admin/products/change-multi?_method=PATCH`, method="POST", name="form-change-multi")
+    .d-flex.align-items-start
+      .form-group
+        select(name="type", class="form-control")
+          option(value="active") Hoạt động
+          option(value="inactive") Dừng hoạt động
+      .form-group
+        input(type="text", name="ids", value="", class="form-control")
+      button(type="submit", class="btn btn-primary") Áp dụng
   table.table.table-striped
     thead
       tr
+        th 
+          input(type="checkbox" name='checkall')
         th(scope="col") STT
         th(scope="col") Hình ảnh
         th(scope="col") Tiêu đề
@@ -27,7 +38,9 @@ block main
     tbody
       each item, index in products
         tr
-          th(scope="row") #{index + 1}
+          td 
+            input(type="checkbox" value=item._id name='id')
+          td(scope="row") #{index + 1}
           td 
             img(src=item.thumbnail, alt="", srcset="")
           td #{item.title}

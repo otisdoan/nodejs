@@ -52,3 +52,7 @@ module.exports.changeStatus = async (req, res) => {
     });
 
 }
+module.exports.changeMulti = (req, res) => {
+  console.log(req.body);
+  res.send('OK');
+}

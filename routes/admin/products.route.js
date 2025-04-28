@@ -4,5 +4,5 @@ const productsController = require('../../controllers/admin/products/products.co
 
 route.get('/', productsController.index);
 route.patch('/change-status/:status/:id', productsController.changeStatus);
-
+route.patch('/change-multi', productsController.changeMulti)
 module.exports = route;
