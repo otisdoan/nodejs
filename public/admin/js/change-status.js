@@ -6,9 +6,10 @@ buttonStatus.forEach((item) => {
   let id;
   let path;
   item.addEventListener('click', () => {
-    item.innerHTML === 'Hoạt động' ? status = 'active' : status = 'inactive';
+    item.innerHTML === 'Hoạt động' ? status = 'inactive' : status = 'active';
     id = item.getAttribute('id-status');
-    path = ` ${formElement.getAttribute('action')}/change-status/${'active'}/${id}`
-    console.log(path);
+    path = ` ${formElement.getAttribute('data-path')}/change-status/${status}/${id}`;
+    formElement.action = path;
+    formElement.submit();
   })
 })

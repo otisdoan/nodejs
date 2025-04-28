@@ -37,7 +37,7 @@ module.exports.index = async (req, res) => {
 }
 
 module.exports.changeStatus = async (req, res) => {
-  Products.findByIdAndUpdate(req.params.id,
+  await Products.findByIdAndUpdate(req.params.id,
     {
       status: req.params.status
     },
