@@ -36,6 +36,17 @@ module.exports.index = async (req, res) => {
   })
 }
 
-module.exports.changeStatus = (req, res) => {
-  res.send(req.params)
+module.exports.changeStatus = async (req, res) => {
+  Products.findByIdAndUpdate(req.params.id,
+    {
+      status: req.params.status
+    },
+    { new: true }
+  )
+    .then(updatedUser => {
+      console.log('Người dùng sau khi cập nhật:', updatedUser);
+    })
+    .catch(err => {
+      console.error('Lỗi khi cập nhật:', err);
+    });
 }

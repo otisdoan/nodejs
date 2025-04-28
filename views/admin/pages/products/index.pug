@@ -33,9 +33,12 @@ block main
           td #{item.title}
           td #{item.price}$
           td
-            .btn(class=item.classStatus) #{item.displayStatus}
+            .btn.status(class=item.classStatus, id-status=item._id) #{item.displayStatus}
           td
             .action 
               .btn.btn-warning Sửa
               .btn.btn-danger Xóa 
   include ../../partials/pagination.pug
+  form.change-status(action="/admin/products", method="get")
+  script(src="/admin/js/change-status.js")
+  

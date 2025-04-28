@@ -1,7 +1,6 @@
 const resultSearch = document.querySelector('input');
 const page = document.querySelectorAll('.page-item');
 var url = new URL(window.location.href);
-console.log(page);
 
 if (resultSearch) {
   resultSearch.addEventListener('change', (e) => {
