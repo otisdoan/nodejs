@@ -52,7 +52,10 @@ module.exports.changeStatus = async (req, res) => {
     });
 
 }
-module.exports.changeMulti = (req, res) => {
-  console.log(req.body);
-  res.send('OK');
+module.exports.changeMulti = async (req, res) => {
+  await Products.updateMany(
+    { _id: { $in: req.body.ids.split(', ') } },
+    { $set: { status: req.body.type } }
+  )
+  res.redirect('/admin/products');
 }

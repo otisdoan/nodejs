@@ -2,7 +2,9 @@ const buttonStatus = document.querySelectorAll('.status');
 const formElement = document.querySelector('.change-status');
 const checkBoxAll = document.querySelector("[name = 'checkall']");
 const checkBoxRecord = document.querySelectorAll("[name='id']");
-
+const formChangeMulti = document.querySelector("[name='form-change-multi']");
+const inputFormChangeMulti = document.querySelector("[name='ids']");
+const buttonChangeMulti = document.querySelector("[name='button-change-multi']");
 buttonStatus.forEach((item) => {
   let status;
   let id;
@@ -28,17 +30,27 @@ checkBoxAll.addEventListener('click', () => {
   }
 })
 
-let total = 0;
+
 checkBoxRecord.forEach((item) => {
   item.addEventListener('click', () => {
-    if (item.checked === true) {
-      total++;
-      if (total >= 2 && total % 2 === 0) {
-        checkBoxAll.checked = true;
-      }
+    const countChecked = document.querySelectorAll("input[name='id']:checked").length;
+    if (countChecked === checkBoxRecord.length) {
+      checkBoxAll.checked = true;
     } else {
-      total--;
       checkBoxAll.checked = false;
     }
   })
+})
+
+buttonChangeMulti.addEventListener('click', (e) => {
+  e.preventDefault();
+  const checkedProducts = document.querySelectorAll("input[name='id']:checked");
+  let ids = [];
+  if (checkedProducts.length > 0) {
+    checkedProducts.forEach((item) => {
+      ids.push(item.value);
+    })
+  }
+  inputFormChangeMulti.value = ids.join(', ');
+  formChangeMulti.submit();
 })
