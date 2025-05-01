@@ -17,7 +17,7 @@ module.exports.index = async (req, res) => {
   }
   let skipProducts;
   const totalProducts = await Products.find(find).countDocuments();
-  const sizePage = 2;
+  const sizePage = 5;
 
   if (req.query.page || 1) {
     skipProducts = (req.query.page - 1) * sizePage;
@@ -52,10 +52,16 @@ module.exports.changeStatus = async (req, res) => {
     });
 
 }
+
 module.exports.changeMulti = async (req, res) => {
   await Products.updateMany(
     { _id: { $in: req.body.ids.split(', ') } },
     { $set: { status: req.body.type } }
   )
   res.redirect('/admin/products');
+}
+
+module.exports.deleteProduct = async (req, res) => {
+  await Products.findByIdAndDelete(req.params.id)
+  res.redirect('/admin/products')
 }

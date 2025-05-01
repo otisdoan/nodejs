@@ -5,6 +5,9 @@ const checkBoxRecord = document.querySelectorAll("[name='id']");
 const formChangeMulti = document.querySelector("[name='form-change-multi']");
 const inputFormChangeMulti = document.querySelector("[name='ids']");
 const buttonChangeMulti = document.querySelector("[name='button-change-multi']");
+const buttonDelete = document.querySelectorAll('.btn.btn-danger');
+const formDelete = document.querySelector('.delete-product');
+
 buttonStatus.forEach((item) => {
   let status;
   let id;
@@ -54,3 +57,12 @@ buttonChangeMulti.addEventListener('click', (e) => {
   inputFormChangeMulti.value = ids.join(', ');
   formChangeMulti.submit();
 })
+
+buttonDelete.forEach((item) => {
+  item.addEventListener('click', () => {
+    let path = `${formDelete.getAttribute('data-path')}/delete/${item.getAttribute('data-id')}?_method=DELETE`;
+    formDelete.action = path;
+    formDelete.submit();
+  })
+})
+
