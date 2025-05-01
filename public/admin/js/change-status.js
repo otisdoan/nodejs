@@ -2,7 +2,6 @@ const buttonStatus = document.querySelectorAll('.status');
 const formElement = document.querySelector('.change-status');
 const checkBoxAll = document.querySelector("[name = 'checkall']");
 const checkBoxRecord = document.querySelectorAll("[name='id']");
-let total = 0;
 
 buttonStatus.forEach((item) => {
   let status;
@@ -29,16 +28,17 @@ checkBoxAll.addEventListener('click', () => {
   }
 })
 
+let total = 0;
 checkBoxRecord.forEach((item) => {
   item.addEventListener('click', () => {
     if (item.checked === true) {
-      total--;
-    } else {
-      item.checked = true;
       total++;
-      if (total === checkBoxRecord.length) {
+      if (total >= 2 && total % 2 === 0) {
         checkBoxAll.checked = true;
       }
+    } else {
+      total--;
+      checkBoxAll.checked = false;
     }
   })
 })
