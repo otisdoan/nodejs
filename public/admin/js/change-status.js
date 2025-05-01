@@ -32,14 +32,13 @@ checkBoxAll.addEventListener('click', () => {
 checkBoxRecord.forEach((item) => {
   item.addEventListener('click', () => {
     if (item.checked === true) {
+      total--;
+    } else {
+      item.checked = true;
       total++;
-    } else {
-      checkBoxAll.checked = false;
-    }
-    if (total === checkBoxRecord.length) {
-      checkBoxAll.checked = true;
-    } else {
-      checkBoxAll.checked = false;
+      if (total === checkBoxRecord.length) {
+        checkBoxAll.checked = true;
+      }
     }
   })
 })
