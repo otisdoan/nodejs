@@ -53,6 +53,7 @@ module.exports.changeMulti = async (req, res) => {
         { _id: { $in: req.body.ids.split(', ') } },
         { $set: { status: req.body.type } }
       )
+      req.flash('success', 'Cập nhập thành công')
       break;
     case 'inactive':
       await Products.updateMany(

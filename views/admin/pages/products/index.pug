@@ -1,6 +1,9 @@
 extends ../../layouts/default.pug
 
 block main 
+  if (messages.success)
+    .message.info
+      div.alert.alert-success(role="alert") #{ messages.success }
   h2 Danh sách sản phẩm
   .row 
     .col-6
