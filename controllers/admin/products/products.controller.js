@@ -43,14 +43,7 @@ module.exports.changeStatus = async (req, res) => {
     },
     { new: true }
   )
-    .then(updatedUser => {
-      console.log('Người dùng sau khi cập nhật:', updatedUser);
-      res.redirect('/admin/products')
-    })
-    .catch(err => {
-      console.error('Lỗi khi cập nhật:', err);
-    });
-
+  res.redirect('/admin/products')
 }
 
 module.exports.changeMulti = async (req, res) => {
@@ -62,6 +55,6 @@ module.exports.changeMulti = async (req, res) => {
 }
 
 module.exports.deleteProduct = async (req, res) => {
-  await Products.findByIdAndDelete(req.params.id)
+  await Products.findByIdAndUpdate(req.params.id, { deleted: true })
   res.redirect('/admin/products')
 }

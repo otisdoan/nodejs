@@ -5,7 +5,7 @@ const checkBoxRecord = document.querySelectorAll("[name='id']");
 const formChangeMulti = document.querySelector("[name='form-change-multi']");
 const inputFormChangeMulti = document.querySelector("[name='ids']");
 const buttonChangeMulti = document.querySelector("[name='button-change-multi']");
-const buttonDelete = document.querySelectorAll('.btn.btn-danger');
+const buttonDelete = document.querySelectorAll('.btn.btn-danger.delete');
 const formDelete = document.querySelector('.delete-product');
 
 buttonStatus.forEach((item) => {
