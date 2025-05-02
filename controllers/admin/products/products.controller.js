@@ -47,10 +47,28 @@ module.exports.changeStatus = async (req, res) => {
 }
 
 module.exports.changeMulti = async (req, res) => {
-  await Products.updateMany(
-    { _id: { $in: req.body.ids.split(', ') } },
-    { $set: { status: req.body.type } }
-  )
+  switch (req.body.type) {
+    case 'active':
+      await Products.updateMany(
+        { _id: { $in: req.body.ids.split(', ') } },
+        { $set: { status: req.body.type } }
+      )
+      break;
+    case 'inactive':
+      await Products.updateMany(
+        { _id: { $in: req.body.ids.split(', ') } },
+        { $set: { status: req.body.type } }
+      )
+      break;
+    case 'delete':
+      await Products.updateMany(
+        { _id: { $in: req.body.ids.split(', ') } },
+        { $set: { deleted: true, deletedAt: new Date() } }
+      )
+      break;
+    default:
+      break;
+  }
   res.redirect('/admin/products');
 }
 
