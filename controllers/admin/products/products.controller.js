@@ -55,6 +55,6 @@ module.exports.changeMulti = async (req, res) => {
 }
 
 module.exports.deleteProduct = async (req, res) => {
-  await Products.findByIdAndUpdate(req.params.id, { deleted: true })
+  await Products.findByIdAndUpdate(req.params.id, { deleted: true, deletedAt: new Date() })
   res.redirect('/admin/products')
 }
