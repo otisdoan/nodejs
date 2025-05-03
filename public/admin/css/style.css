@@ -27,3 +27,31 @@
 td img {
   width: 10rem;
 }
+
+.preview-image {
+  display: none;
+  width: 20rem;
+  height: 20rem;
+}
+
+.cancel {
+  opacity: 0;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 4rem;
+  left: 17.5rem;
+  cursor: pointer;
+}
+
+.image-form {
+  position: relative;
+}

@@ -1,6 +1,9 @@
 const resultSearch = document.querySelector('.search');
 const page = document.querySelectorAll('.page-item');
 var url = new URL(window.location.href);
+const inputImage = document.querySelector('.form-control-file');
+const imagePreview = document.querySelector('.preview-image');
+const cancel = document.querySelector('.cancel');
 
 if (resultSearch) {
   resultSearch.addEventListener('change', (e) => {
@@ -20,3 +23,21 @@ page.forEach((item, index) => {
     window.location.href = url.href;
   })
 })
+
+if (inputImage) {
+  inputImage.addEventListener('change', (e) => {
+    const [file] = e.target.files
+    if (file) {
+      imagePreview.src = URL.createObjectURL(file);
+      imagePreview.style.display = 'block';
+      cancel.style.opacity = 1;
+    }
+  })
+}
+
+cancel.addEventListener('click', () => {
+  inputImage.value = '';
+  imagePreview.style.display = 'none';
+  cancel.style.opacity = 0;
+})
+

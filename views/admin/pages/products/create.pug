@@ -22,9 +22,11 @@ block main
       label(for="stock") Số lượng
       input#stock.form-control(type="number", name="stock", value="0", min="0")
 
-    .form-group
+    .form-group.image-form
       label(for="thumbnail") Ảnh
       input#thumbnail.form-control-file(type="file", name="thumbnail", accept='image/*')
+      img.preview-image(src="", alt="", srcset="")
+      .cancel X
 
     .form-group.form-check.form-check-inline
       input#statusActive.form-check-input(type="radio", name="status", value="active", checked)
@@ -36,3 +38,4 @@ block main
 
     .form-group
       button.btn.btn-primary(type="submit") Tạo mới
+  
