@@ -15,19 +15,23 @@ block main
           a.dropdown-item(href="/admin/products?status=inactive") Dừng hoạt động
     .col-6
       .input-group.mb-3
-        input.form-control(type="text", placeholder="Tìm kiếm sản phẩm", aria-label="Recipient's username", aria-describedby="button-addon2", value= searchs)
+        input.form-control.search(type="text", placeholder="Tìm kiếm sản phẩm", aria-label="Recipient's username", aria-describedby="button-addon2", value= searchs)
         .input-group-append
           button.btn.btn-success(type="button", id="button-addon2") Tìm kiếm
-  form(action=`/admin/products/change-multi?_method=PATCH`, method="POST", name="form-change-multi")
-    .d-flex.align-items-start
-      .form-group
-        select(name="type", class="form-control")
-          option(value="active") Hoạt động
-          option(value="inactive") Dừng hoạt động
-          option(value="delete") Xóa tất cả
-      .form-group
-        input(type="text", name="ids", value="", class="form-control")
-      button(type="submit", class="btn btn-primary", name='button-change-multi') Áp dụng
+  .row
+    .col-6
+      form(action=`/admin/products/change-multi?_method=PATCH`, method="POST", name="form-change-multi")
+        .d-flex.align-items-start
+          .form-group
+            select(name="type", class="form-control")
+              option(value="active") Hoạt động
+              option(value="inactive") Dừng hoạt động
+              option(value="delete") Xóa tất cả
+          .form-group
+            input(type="text", name="ids", value="", class="form-control")
+          button(type="submit", class="btn btn-primary", name='button-change-multi') Áp dụng
+    .col-6
+      a.btn.btn-outline-success(href="/admin/products/create") + Thêm sản phẩm
   table.table.table-striped
     thead
       tr

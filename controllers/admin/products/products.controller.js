@@ -77,3 +77,19 @@ module.exports.deleteProduct = async (req, res) => {
   await Products.findByIdAndUpdate(req.params.id, { deleted: true, deletedAt: new Date() })
   res.redirect('/admin/products')
 }
+
+module.exports.create = async (req, res) => {
+  res.render('admin/pages/products/create.pug')
+}
+
+module.exports.createPost = async (req, res) => {
+  const newProduct = {
+    ...req.body,
+    price: parseInt(req.body.price),
+    discountPercentage: parseInt(req.body.discountPercentage),
+    stock: parseInt(req.body.stock),
+    deleted: false,
+  }
+  await new Products(newProduct).save();
+  res.redirect('/admin/products')
+}

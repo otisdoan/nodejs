@@ -1,4 +1,4 @@
-const resultSearch = document.querySelector('input');
+const resultSearch = document.querySelector('.search');
 const page = document.querySelectorAll('.page-item');
 var url = new URL(window.location.href);
 

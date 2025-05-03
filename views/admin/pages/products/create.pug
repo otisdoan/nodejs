@@ -1,0 +1,38 @@
+extends ../../layouts/default.pug
+block main 
+  h2 Thêm mới sản phẩm
+  form#form-create-product(action=`/admin/products/create`, method="POST")
+    .form-group
+      label(for="title") Tiêu đề
+      input#title.form-control(type="text", name="title", required)
+
+    .form-group
+      label(for="desc") Mô tả
+      textarea#desc.form-control(name="description", rows="5")
+
+    .form-group
+      label(for="price") Giá
+      input#price.form-control(type="number", name="price", value="0", min="0")
+
+    .form-group
+      label(for="discount") % Giảm giá
+      input#discount.form-control(type="number", name="discountPercentage", value="0", min="0")
+
+    .form-group
+      label(for="stock") Số lượng
+      input#stock.form-control(type="number", name="stock", value="0", min="0")
+
+    .form-group
+      label(for="thumbnail") Ảnh
+      input#thumbnail.form-control(type="text", name="thumbnail")
+
+    .form-group.form-check.form-check-inline
+      input#statusActive.form-check-input(type="radio", name="status", value="active", checked)
+      label.form-check-label(for="statusActive") Hoạt động
+
+    .form-group.form-check.form-check-inline
+      input#statusInactive.form-check-input(type="radio", name="status", value="inactive")
+      label.form-check-label(for="statusInactive") Dừng hoạt động
+
+    .form-group
+      button.btn.btn-primary(type="submit") Tạo mới
