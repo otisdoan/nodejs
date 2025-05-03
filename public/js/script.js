@@ -20,4 +20,3 @@ page.forEach((item, index) => {
     window.location.href = url.href;
   })
 })
-

@@ -1,7 +1,7 @@
 extends ../../layouts/default.pug
 block main 
   h2 Thêm mới sản phẩm
-  form#form-create-product(action=`/admin/products/create`, method="POST")
+  form#form-create-product(action=`/admin/products/create`, method="POST", enctype="multipart/form-data")
     .form-group
       label(for="title") Tiêu đề
       input#title.form-control(type="text", name="title", required)
@@ -24,7 +24,7 @@ block main
 
     .form-group
       label(for="thumbnail") Ảnh
-      input#thumbnail.form-control(type="text", name="thumbnail")
+      input#thumbnail.form-control-file(type="file", name="thumbnail", accept='image/*')
 
     .form-group.form-check.form-check-inline
       input#statusActive.form-check-input(type="radio", name="status", value="active", checked)
