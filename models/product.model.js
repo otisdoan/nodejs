@@ -4,14 +4,22 @@ const productSchema = new mongoose.Schema({
   title: String,
   description: String,
   discountPercentage: Number,
-  category: String,
+  category: {
+    type: String,
+    default: 'beauty'
+  },
   price: Number,
   stock: Number,
   status: String,
-  deleted: Boolean,
+  deleted: {
+    type: Boolean,
+    default: false
+  },
   position: Number,
   thumbnail: String,
   deletedAt: Date,
+}, {
+  timestamps: true
 })
 
 const Product = mongoose.model("Product", productSchema, 'products')

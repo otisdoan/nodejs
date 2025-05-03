@@ -88,7 +88,6 @@ module.exports.createPost = async (req, res) => {
     price: parseInt(req.body.price),
     discountPercentage: parseInt(req.body.discountPercentage),
     stock: parseInt(req.body.stock),
-    deleted: false,
   }
   await new Products(newProduct).save();
   res.redirect('/admin/products')
