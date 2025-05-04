@@ -82,6 +82,7 @@ module.exports.create = async (req, res) => {
 }
 
 module.exports.createPost = async (req, res) => {
+  console.log(req.file);
   const newProduct = {
     ...req.body,
     price: parseInt(req.body.price),
@@ -90,5 +91,29 @@ module.exports.createPost = async (req, res) => {
     thumbnail: `/uploads/${req.file?.filename}`
   }
   await new Products(newProduct).save();
+  res.redirect('/admin/products')
+}
+
+module.exports.edit = async (req, res) => {
+  let find = {
+    deleted: false,
+    _id: req.params.id
+  }
+  const product = await Products.findOne(find);
+  res.render('admin/pages/products/edit.pug', {
+    product: product,
+  })
+}
+
+module.exports.update = async (req, res) => {
+  const updateProduct = {
+    ...req.body,
+    price: parseInt(req.body.price),
+    discountPercentage: parseInt(req.body.discountPercentage),
+    stock: parseInt(req.body.stock),
+    thumbnail: `/uploads/${req.file?.filename}`
+  }
+  console.log(updateProduct);
+  await Products.findByIdAndUpdate({ _id: req.params.id }, updateProduct)
   res.redirect('/admin/products')
 }

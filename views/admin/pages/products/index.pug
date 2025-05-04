@@ -57,7 +57,7 @@ block main
             .btn.status(class=item.classStatus, id-status=item._id) #{item.displayStatus}
           td
             .action 
-              .btn.btn-warning Sửa
+              a.btn.btn-warning.edit(href=`/admin/products/edit/${item._id}`) Sửa 
               .btn.btn-danger.delete(data-id=item._id) Xóa 
   include ../../partials/pagination.pug
   form.change-status(action="", method="POST", data-path='/admin/products')

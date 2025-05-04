@@ -1,0 +1,49 @@
+extends ../../layouts/default.pug 
+
+block main 
+  h2 Chỉnh sửa sản phẩm
+  form#form-edit-product.form-edit(action=`/admin/products/edit`, method="POST", enctype="multipart/form-data")
+    .form-group
+      label(for="title") Tiêu đề
+      input#title.form-control(type="text", name="title", required, value=product.title)
+
+    .form-group
+      label(for="desc") Mô tả
+      textarea#desc.form-control(name="description", rows="5") #{product.description}
+
+    .form-group
+      label(for="price") Giá
+      input#price.form-control(type="number", name="price", value=product.price, min="0")
+
+    .form-group
+      label(for="discount") % Giảm giá
+      input#discount.form-control(type="number", name="discountPercentage", value=product.discountPercentage, min="0")
+
+    .form-group
+      label(for="stock") Số lượng
+      input#stock.form-control(type="number", name="stock", value=product.stock, min="0")
+
+    .form-group.image-form
+      label(for="thumbnail") Ảnh
+      input#thumbnail.form-control-file(type="file", name="thumbnail", accept='image/*')
+      img.preview-image(src=product.thumbnail, alt="", srcset="")
+      .cancel X
+
+    if product.status === 'active'
+      .form-group.form-check.form-check-inline
+        input#statusActive.form-check-input(type="radio", name="status", value="active", checked)
+        label.form-check-label(for="statusActive") Hoạt động
+
+      .form-group.form-check.form-check-inline
+        input#statusInactive.form-check-input(type="radio", name="status", value="inactive")
+        label.form-check-label(for="statusInactive") Dừng hoạt động
+    else 
+      .form-group.form-check.form-check-inline
+        input#statusActive.form-check-input(type="radio", name="status", value="active")
+        label.form-check-label(for="statusActive") Hoạt động
+
+      .form-group.form-check.form-check-inline
+        input#statusInactive.form-check-input(type="radio", name="status", value="inactive", checked)
+        label.form-check-label(for="statusInactive") Dừng hoạt động
+    .form-group
+      button.btn.btn-primary.update(type="submit") Cập nhập

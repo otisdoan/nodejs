@@ -65,4 +65,3 @@ buttonDelete.forEach((item) => {
     formDelete.submit();
   })
 })
-

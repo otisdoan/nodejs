@@ -4,6 +4,8 @@ var url = new URL(window.location.href);
 const inputImage = document.querySelector('.form-control-file');
 const imagePreview = document.querySelector('.preview-image');
 const cancel = document.querySelector('.cancel');
+const editButton = document.querySelectorAll('.update');
+const formEdit = document.querySelector('.form-edit');
 
 if (resultSearch) {
   resultSearch.addEventListener('change', (e) => {
@@ -29,7 +31,6 @@ if (inputImage) {
     const [file] = e.target.files
     if (file) {
       imagePreview.src = URL.createObjectURL(file);
-      imagePreview.style.display = 'block';
       cancel.style.opacity = 1;
     }
   })
@@ -37,7 +38,17 @@ if (inputImage) {
 
 cancel.addEventListener('click', () => {
   inputImage.value = '';
-  imagePreview.style.display = 'none';
+  imagePreview.src = ''
   cancel.style.opacity = 0;
+})
+
+editButton.forEach((item) => {
+  let path;
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    path = `${formEdit.getAttribute('action')}/${window.location.pathname.split('/').pop()}?_method=PATCH`;
+    formEdit.action = path;
+    formEdit.submit();
+  })
 })
 
