@@ -7,12 +7,13 @@ block main
 			each product in products
 				.col-3
 					.product-item
-						.inner-product 
-							img(src=product.thumbnail, alt="")
-							span.inner-title #{product.title}
-							span.inner-price #{product.newPrice}$
-							span.old-price #{product.price}$
-							.inner-discount -#{product.discountPercentage}%
+						a(href=`/products/detail/${product.slug}`)
+							.inner-product 
+								img(src=product.thumbnail, alt="")
+								span.inner-title #{product.title}
+								span.inner-price #{product.newPrice}$
+								span.old-price #{product.price}$
+								.inner-discount -#{product.discountPercentage}% 
 			
 
 

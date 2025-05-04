@@ -14,3 +14,10 @@ module.exports.index = async (req, res) => {
         products: newProducts
     })
 }
+
+module.exports.detail = async (req, res) => {
+    const product = await Product.findOne({ slug: req.params.slug })
+    res.render('client/pages/products/detail', {
+        product: product
+    })
+}
