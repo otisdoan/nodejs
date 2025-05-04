@@ -83,12 +83,15 @@ module.exports.create = async (req, res) => {
 }
 
 module.exports.createPost = async (req, res) => {
+  if (!req.body.title) {
+    return;
+  }
   const newProduct = {
     ...req.body,
     price: parseInt(req.body.price),
     discountPercentage: parseInt(req.body.discountPercentage),
     stock: parseInt(req.body.stock),
-    thumbnail: `/uploads/${req.file.filename}`
+    thumbnail: `/uploads/${req.file?.filename}`
   }
   await new Products(newProduct).save();
   res.redirect('/admin/products')
