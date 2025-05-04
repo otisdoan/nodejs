@@ -82,7 +82,6 @@ module.exports.create = async (req, res) => {
 }
 
 module.exports.createPost = async (req, res) => {
-  console.log(req.file);
   const newProduct = {
     ...req.body,
     price: parseInt(req.body.price),
