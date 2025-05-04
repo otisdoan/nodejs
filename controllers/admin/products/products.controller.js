@@ -1,6 +1,5 @@
 const Products = require('../../../models/product.model')
 module.exports.index = async (req, res) => {
-
   let find = {
     deleted: false
   }
@@ -83,9 +82,6 @@ module.exports.create = async (req, res) => {
 }
 
 module.exports.createPost = async (req, res) => {
-  if (!req.body.title) {
-    return;
-  }
   const newProduct = {
     ...req.body,
     price: parseInt(req.body.price),
