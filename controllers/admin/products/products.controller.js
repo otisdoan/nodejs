@@ -116,3 +116,10 @@ module.exports.update = async (req, res) => {
   await Products.findByIdAndUpdate({ _id: req.params.id }, updateProduct)
   res.redirect('/admin/products')
 }
+
+module.exports.detail = async (req, res) => {
+  const product = await Products.findOne({ _id: req.params.id, deleted: false })
+  res.render('admin/pages/products/detail.pug', {
+    product: product
+  })
+}

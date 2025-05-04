@@ -57,6 +57,7 @@ block main
             .btn.status(class=item.classStatus, id-status=item._id) #{item.displayStatus}
           td
             .action 
+              a.btn.btn-secondary(href=`/admin/products/detail/${item._id}`) Chi tiết
               a.btn.btn-warning.edit(href=`/admin/products/edit/${item._id}`) Sửa 
               .btn.btn-danger.delete(data-id=item._id) Xóa 
   include ../../partials/pagination.pug
