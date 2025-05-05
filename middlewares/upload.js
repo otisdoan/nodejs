@@ -5,7 +5,7 @@ const cloudinary = require('../utils/cloudinary');
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'uploads', // Tên folder trong Cloudinary
+    folder: 'uploads',
     allowed_formats: ['jpg', 'png', 'jpeg'],
   },
 });
