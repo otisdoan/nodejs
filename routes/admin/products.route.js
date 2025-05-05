@@ -1,9 +1,7 @@
 const express = require('express');
 const route = express.Router();
 const productsController = require('../../controllers/admin/products/products.controller')
-const multer = require('multer');
-const storage = require('../../helpers/storageMulter');
-const upload = multer({ storage: storage() })
+const upload = require('../../middlewares/upload');
 const validate = require('../../validates/admin/product.validate');
 
 route.get('/', productsController.index);

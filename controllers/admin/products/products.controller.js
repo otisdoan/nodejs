@@ -87,10 +87,11 @@ module.exports.createPost = async (req, res) => {
     price: parseInt(req.body.price),
     discountPercentage: parseInt(req.body.discountPercentage),
     stock: parseInt(req.body.stock),
-    thumbnail: `/uploads/${req.file?.filename}`
+    thumbnail: req.file.path
   }
   await new Products(newProduct).save();
   res.redirect('/admin/products')
+
 }
 
 module.exports.edit = async (req, res) => {
