@@ -10,7 +10,6 @@ const formDelete = document.querySelector('.delete-product');
 const sort = document.querySelector("[name='sort']");
 const sortClear = document.querySelector('[sort-clear]');
 
-
 buttonStatus.forEach((item) => {
   let status;
   let id;
