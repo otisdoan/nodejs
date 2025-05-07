@@ -11,6 +11,7 @@ require('dotenv').config();
 const database = require('./config/database');
 const port = process.env.PORT;
 var methodOverride = require('method-override');
+var path = require('path');
 
 database.connect();
 
@@ -27,6 +28,8 @@ app.use(express.static(`${__dirname}/public`));
 
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
+
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 
 route(app);
 routeAdmin(app);
