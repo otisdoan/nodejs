@@ -8,6 +8,8 @@ const buttonChangeMulti = document.querySelector("[name='button-change-multi']")
 const buttonDelete = document.querySelectorAll('.btn.btn-danger.delete');
 const formDelete = document.querySelector('.delete-product');
 const sort = document.querySelector("[name='sort']");
+const sortClear = document.querySelector('[sort-clear]');
+
 
 buttonStatus.forEach((item) => {
   let status;
@@ -72,5 +74,12 @@ sort.addEventListener('change', (e) => {
   let path = new URL(window.location.href);
   path.searchParams.set('sortKey', key);
   path.searchParams.set('sortValue', value);
+  window.location.href = path.href;
+})
+
+sortClear.addEventListener('click', () => {
+  let path = new URL(window.location.href);
+  path.searchParams.delete('sortKey');
+  path.searchParams.delete('sortValue');
   window.location.href = path.href;
 })
