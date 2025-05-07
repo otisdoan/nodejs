@@ -14,6 +14,12 @@ module.exports.index = async (req, res) => {
       $options: 'i'
     }
   }
+
+  let sort = {};
+  if (req.query.sortKey && req.query.sortValue) {
+    sort[req.query.sortKey] = req.query.sortValue;
+  }
+
   let skipProducts;
   const totalProducts = await Products.find(find).countDocuments();
   const sizePage = 5;
@@ -22,7 +28,7 @@ module.exports.index = async (req, res) => {
     skipProducts = (req.query.page - 1) * sizePage;
   }
 
-  const products = await Products.find(find).limit(sizePage).skip(skipProducts || 0);
+  const products = await Products.find(find).limit(sizePage).skip(skipProducts || 0).sort(sort);
   const newProduct = products.map((item) => {
     item.displayStatus = item.status === 'active' ? 'Hoạt động' : 'Dừng hoạt động'
     item.classStatus = item.status === 'active' ? 'btn-success' : 'btn-danger'
