@@ -8,8 +8,11 @@ block main
     
     .form-group
       label(for="title") Danh mục cha
-      input#title.form-control(type="text", name="parent_id")
-
+      select(name="parent_id" id="parent_id" class="form-control")
+        option(value="") -- Chọn danh mục cha --
+        if category
+          each item in category
+            option(value=item.id)= item.title
     .form-group
       label(for="desc") Mô tả
       textarea#desc.form-control(name="description", rows="5")
